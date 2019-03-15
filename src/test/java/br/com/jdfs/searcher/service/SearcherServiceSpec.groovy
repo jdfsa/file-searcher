@@ -57,4 +57,13 @@ class SearcherServiceSpec extends Specification {
         then:
         result.intValue() == 33
     }
+
+    def "Find occurrences with 100% having line breaks"() {
+        when:
+        double result = searcherService.findOccurrences(
+                "two two one one test",
+                "test \none \ntwo\n three\n four \nfive \nsix")
+        then:
+        result == 100
+    }
 }

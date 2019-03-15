@@ -30,8 +30,8 @@ public class SearcherService {
         String searchablePhrase = stringCleanerComponent.getOnlyWords(phrase);
         String searchableText = stringCleanerComponent.getOnlyWords(text);
 
-        List<String> totalWords = Arrays.stream(searchableText.toLowerCase().split(" ")).collect(Collectors.toList());
         Set<String> searchWords = Arrays.stream(searchablePhrase.toLowerCase().split(" ")).collect(Collectors.toSet());
+        List<String> totalWords = Arrays.stream(searchableText.toLowerCase().split(" ")).collect(Collectors.toList());
 
         double totalMatches = searchWords.parallelStream()
                 .mapToDouble(word -> totalWords.contains(word) ? 1 : 0).sum();

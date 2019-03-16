@@ -12,9 +12,11 @@ import java.util.Scanner;
 @SpringBootApplication
 public class SearcherApplication implements CommandLineRunner {
 
+    private StartupProcessor startupProcessor;
+
     @Autowired
     public SearcherApplication(StartupProcessor startupProcessor) {
-        startupProcessor.readDirectories();
+        this.startupProcessor = startupProcessor;
     }
 
     public static void main(String[] args) {
@@ -25,15 +27,7 @@ public class SearcherApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        System.out.println("Test running");
-
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.print("search> ");
-            String t = scanner.nextLine();
-            System.out.println(t);
-        }
+    public void run(String... args) {
+        startupProcessor.init(args[0]);
     }
 }

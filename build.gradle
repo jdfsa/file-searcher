@@ -20,6 +20,7 @@ dependencies {
     testCompile 'junit:junit',
                 'org.codehaus.groovy:groovy-all',
                 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testCompile group: 'cglib', name: 'cglib-nodep', version: '3.2.0'
 }
 
 jar {
